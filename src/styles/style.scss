@@ -1,0 +1,282 @@
+$main-text-color: #3d3d3d;
+$accent-color: #fdd000;
+$secondary-text-color: #DFDFDF;
+$calendar-bg: #272829;
+
+$calendar-line: 1px solid rgba(255, 255, 255, .43);
+
+html, 
+body,
+.App,
+.main,
+.home,
+#root {
+	height: 100%;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+	font-family: 'Rubik', sans-serif;
+	color: $main-text-color;
+}
+
+ul {
+	list-style: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 130px;
+
+	.nav {
+		width: 215px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	a {
+		text-transform: uppercase;
+		color: $main-text-color;
+		position: relative;
+		font-size: 1.3rem;
+		font-weight: 500;
+
+		&.selected::before {
+			content: '';
+			background-color: $accent-color;
+			width: 14px;
+			height: 14px;
+			border-radius: 10px;
+			position: absolute;
+			bottom: -17px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}
+
+.home {
+	background-image: url(../images/home-bg.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	&__info {
+		text-align: right;
+		max-width: 382px;
+		height: 296px;
+		margin-right: 2rem;
+
+		&-title {
+			color: $accent-color;
+			text-transform: uppercase;
+			font-weight: 700;
+			letter-spacing: 3.5px;
+		}
+
+		&-descr {
+			color: $secondary-text-color;
+			font-weight: 300;
+		}
+	}
+
+	&__calendar {
+		font-size: .9rem;
+		width: 600px;
+		height: 100%;
+		background-color: $calendar-bg;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.1rem;
+
+		button {
+			background: inherit;
+			border: none;
+			color: $secondary-text-color;
+			font-weight: 300;
+			margin-bottom: 1.2rem;
+		}
+	}
+}
+
+.react-calendar {
+	max-width: 345px;
+	position: relative;
+
+	&__navigation__arrow {
+		font-size: 1.2rem;
+		font-weight: 300;
+	}
+
+	&__navigation {
+		border-bottom: $calendar-line;
+		margin-bottom: 1.9rem;
+
+		&__label {
+			text-transform: uppercase;
+
+			&__labelText {
+				font-weight: 600;
+			}
+		}
+
+		&__prev2-button,
+		&__next2-button {
+			display: none;
+		}
+	}
+
+	&__month-view__weekdays {
+		color: #fff;
+		position: absolute;
+		bottom: -34px;
+		width: 100%;
+		text-align: center;
+		border-top: $calendar-line;
+		border-bottom: $calendar-line;
+		padding: 10px 0;
+
+		abbr {
+			text-decoration: none;
+			cursor: default;
+		}
+	}
+
+	&__month-view__days__day--neighboringMonth {
+		opacity: .24;
+	}
+
+	&__tile.react-calendar__tile--now {
+		background-color: $accent-color;
+		color: $main-text-color;
+	}
+}
+
+.modal {
+	&-header {
+		border-bottom: 0;
+	}
+
+	.close {
+		color: $main-text-color;
+		background-color: $accent-color;
+		opacity: 1;
+		padding: .1rem .3rem;
+		font-weight: 300;
+	}
+
+	&-body {
+		padding-top: 0;
+	}
+
+	label {
+		color: $main-text-color;
+		opacity: 0.34;
+		font-size: 0.9rem;
+	}
+
+	.form-control {
+		border-color: $accent-color;
+		border-radius: 0;
+
+		&:focus {
+			box-shadow: none;
+		}
+	}
+}
+
+.aboutus {
+	margin-top: 98px;
+
+	&__title {
+		font-weight: 600;
+		margin-bottom: 78px;
+	}
+
+	p {
+		font-weight: 300;
+		margin-bottom: 1.2rem;
+	}
+}
+
+@media (max-width: 1200px) {
+	.aboutus {
+		margin-top: 1.2rem;
+
+		&__title {
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+@media (max-width: 750px) {
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	.home {
+		flex-direction: column;
+
+		&__info {
+			height: 180px;
+			margin-right: 0;
+			padding: 1.2rem;
+		}
+
+		&__calendar {
+			width: 100%;
+			align-items: center;
+		}
+	}
+}
+
+@media (max-height: 695px) {
+	.home__calendar {
+		font-size: .7rem;
+		align-items: start;
+	}
+}
+
+@media (max-height: 600px) {
+	.home__calendar button {
+		margin-bottom: .9rem;
+	}
+
+	.react-calendar__navigation {
+		margin-bottom: .5rem;
+	}
+}
+
+@media (max-width: 450px) {
+	.header {
+		min-height: 94px;
+
+		img {
+			width: 100px;
+		}
+
+		.nav {
+			justify-content: space-evenly;
+			width: 182px;
+
+			a {
+				font-size: 1rem;
+			}
+		}
+	} 
+}
+
